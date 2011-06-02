@@ -18,23 +18,22 @@ import edu.wpi.first.wpilibj.Timer;
  */
 public class RobotDrive2363 extends RobotDrive
 {
-    private static final int GYRO_CHANNEL = 0;
     private static final double DRIVE_P = 0;
     private static final double DRIVE_I = 0;
     private static final double DRIVE_D = 0;
 
     private Gyro gyro;
 
-    public RobotDrive2363(SpeedController frontLeftMotor, SpeedController rearLeftMotor, SpeedController frontRightMotor, SpeedController rearRightMotor)
-    {
-        super(frontLeftMotor, rearLeftMotor, frontRightMotor, rearRightMotor);
-        gyro = new Gyro(GYRO_CHANNEL);
-    }
     public RobotDrive2363(int frontLeftMotor, int rearLeftMotor, int frontRightMotor, int rearRightMotor)
     {
         super(frontLeftMotor, rearLeftMotor, frontRightMotor, rearRightMotor);
-        gyro = new Gyro(GYRO_CHANNEL);
     }
+    
+    public void setGyro(int channel)
+    {
+        gyro = new Gyro(channel);
+    }
+
     public void forward(double speed, double time)
     {
         PIDRotate  rotate = new PIDRotate(this, speed);
